@@ -1,8 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/0.9">
   <url>
     <loc>https://reach3.reachscreens.ca/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://reach3.reachscreens.ca/assets/photo-1.webp</image:loc>
+      <image:title>Reach Screens indoor digital signage — Lloydminster pub</image:title>
+      <image:caption>Indoor digital advertising screen running a local Lloydminster ad inside a pub.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://reach3.reachscreens.ca/assets/photo-3.webp</image:loc>
+      <image:title>Reach Screens digital signage — Lloydminster coffee shop</image:title>
+      <image:caption>Reach Screens display inside a Lloydminster coffee shop reaching morning customers.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://reach3.reachscreens.ca/assets/photo-4.webp</image:loc>
+      <image:title>Reach Screens digital signage — Lloydminster barbershop</image:title>
+      <image:caption>Reach Screens display inside a Lloydminster barbershop reaching captive viewers.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://reach3.reachscreens.ca/assets/photo-6.webp</image:loc>
+      <image:title>Reach Screens digital signage — Lloydminster retail floor</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://reach3.reachscreens.ca/assets/photo-7.webp</image:loc>
+      <image:title>Reach Screens digital signage — Lloydminster pharmacy</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://reach3.reachscreens.ca/assets/photo-8.webp</image:loc>
+      <image:title>Reach Screens digital signage — Lloydminster auto repair shop</image:title>
+    </image:image>
   </url>
 </urlset>

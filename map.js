@@ -124,10 +124,10 @@
         paint: {
           'fill-extrusion-color': [
             'interpolate', ['linear'], ['coalesce', ['get', 'render_height'], 4],
-            0, '#1a2540',
-            10, '#243456',
-            25, '#2c4068',
-            60, '#3a5483'
+            0, '#D8E2EC',
+            10, '#C8D4E1',
+            25, '#B6C5D5',
+            60, '#9FB1C5'
           ],
           'fill-extrusion-height': [
             'interpolate', ['linear'], ['zoom'],

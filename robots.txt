@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://reachscreens.ca/sitemap.xml
+# Block server-side noise (none currently, listed for clarity)
+Disallow: /Dockerfile
+Disallow: /nginx.conf
+Disallow: /.git/
+
+Sitemap: https://reach3.reachscreens.ca/sitemap.xml
