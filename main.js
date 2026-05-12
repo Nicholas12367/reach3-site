@@ -15,26 +15,15 @@
   }
 
   function init() {
-    // Critical: must run before user interacts.
+    initScrollProgress();
     initNav();
+    initReveal();
+    initCounters();
+    initCardTilt();
     initFaq();
     initTabs();
     initContactForm();
-
-    // Defer the expensive setup until the browser is idle. This drops the
-    // initial long task from ~220ms to under 50ms.
-    const deferred = function () {
-      initScrollProgress();
-      initReveal();
-      initCounters();
-      initCardTilt();
-      initTimeline();
-    };
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(deferred, { timeout: 1500 });
-    } else {
-      setTimeout(deferred, 0);
-    }
+    initTimeline();
   }
 
   /* ---------- Scroll progress bar ---------- */
