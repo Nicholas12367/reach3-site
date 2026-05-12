@@ -210,19 +210,39 @@
     }[c]));
   }
 
-  // Defer boot until the map section scrolls into view (or near it).
-  // This avoids paying MapLibre's ~3s of Map() construction cost during
-  // initial page load — a big TBT win on mobile.
+  // Lazy-load the entire MapLibre dependency tree only when the map section
+  // is about to scroll into view. This avoids downloading ~230KB of JS + CSS
+  // and the ~3s of Map() construction cost during initial page load.
+  let mapLibreLoaded = false;
+  function loadMapLibre(cb) {
+    if (mapLibreLoaded) return cb();
+    mapLibreLoaded = true;
+    const css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.href = 'https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css';
+    document.head.appendChild(css);
+
+    const locScript = document.createElement('script');
+    locScript.src = 'assets/screen-locations.js?v=4';
+    locScript.onload = () => {
+      const mlScript = document.createElement('script');
+      mlScript.src = 'https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js';
+      mlScript.onload = cb;
+      document.body.appendChild(mlScript);
+    };
+    document.body.appendChild(locScript);
+  }
+
   function scheduleBoot() {
     const target = document.querySelector('.map-wrap') || document.getElementById('map');
     if (!target) return;
-    if (!('IntersectionObserver' in window)) return boot();
+    const start = () => loadMapLibre(() => requestAnimationFrame(boot));
+    if (!('IntersectionObserver' in window)) return start();
     const io = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           io.disconnect();
-          // Wait a tick so the click event that triggered the scroll finishes
-          requestAnimationFrame(boot);
+          start();
         }
       });
     }, { rootMargin: '300px 0px' });

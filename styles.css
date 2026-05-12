@@ -2,7 +2,7 @@
    REACH SCREENS — Premium Design System
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+/* Inter font is now loaded via <link rel="stylesheet"> in index.html so it can be made non-blocking. */
 
 :root {
   /* Brand Colors */
@@ -535,10 +535,11 @@ section {
 
 .hero-badge-dot {
   width: 8px; height: 8px;
-  background: var(--color-primary);
+  background: #fff;
   border-radius: 50%;
   box-shadow: 0 0 0 0 rgba(92,224,210,0.7);
   animation: dotPulse 2s ease infinite;
+  will-change: box-shadow;
 }
 @keyframes dotPulse {
   0% { box-shadow: 0 0 0 0 rgba(92,224,210,0.7); }
@@ -1298,7 +1299,8 @@ section {
   margin-bottom: var(--space-3);
 }
 
-.footer h5 {
+.footer h5,
+.footer .footer-h {
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.15em;
