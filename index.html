@@ -33,7 +33,29 @@
   <noscript><link rel="stylesheet" href="styles.css?v=21"></noscript>
 
   <link rel="icon" href="assets/favicon.ico">
-  <script src="assets/analytics.js?v=2" defer></script>
+
+  <!-- Analytics is loaded lazily — after first user interaction or 5s idle. Keeps TBT low. -->
+  <script>
+    (function () {
+      var loaded = false;
+      function load() {
+        if (loaded) return;
+        loaded = true;
+        var s = document.createElement('script');
+        s.src = 'assets/analytics.js?v=3';
+        s.async = true;
+        document.head.appendChild(s);
+      }
+      var events = ['scroll', 'mousemove', 'touchstart', 'keydown', 'click'];
+      events.forEach(function (e) { window.addEventListener(e, load, { once: true, passive: true }); });
+      // Fallback: load after the page is idle / fully done.
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(load, { timeout: 5000 });
+      } else {
+        setTimeout(load, 5000);
+      }
+    })();
+  </script>
 
   <!-- ============ JSON-LD STRUCTURED DATA ============ -->
   <script type="application/ld+json">
