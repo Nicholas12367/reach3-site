@@ -34,6 +34,27 @@
 
   <link rel="icon" href="assets/favicon.ico">
 
+  <!-- Critical CSS inlined so the hero (LCP element) renders at final size on first paint,
+       before styles.css loads. Everything below the hero is styled by styles.css after preload swap. -->
+  <style>
+    :root{--color-primary:#5CE0D2;--color-dark:#0A1628;--color-text:#E6ECF5;--grad-lightblue:#7CD5FF;--space-3:24px;--space-4:32px;--space-5:48px;--container:1200px;--ease:cubic-bezier(0.16,1,0.3,1)}
+    *,*::before,*::after{box-sizing:border-box}*{margin:0;padding:0}
+    html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:clip;width:100%}
+    body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;font-size:17px;line-height:1.65;color:var(--color-text);background:var(--color-dark);overflow-x:clip;width:100%;min-height:100vh}
+    img{max-width:100%;height:auto;display:block}a{color:inherit;text-decoration:none}ul{list-style:none}
+    h1{font-family:'Inter',sans-serif;font-weight:900;line-height:1.1;letter-spacing:-0.03em;color:#fff;font-size:clamp(2.25rem,5.5vw,4.75rem);margin-bottom:var(--space-3)}
+    .text-gradient{background:linear-gradient(120deg,var(--color-primary) 0%,var(--grad-lightblue) 60%,var(--color-primary) 100%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+    .container{max-width:var(--container);margin:0 auto;padding:0 24px;width:100%}
+    .hero{position:relative;min-height:90vh;display:flex;align-items:center;padding:120px 0 80px;overflow:hidden}
+    .hero-content{position:relative;z-index:2;max-width:760px}
+    .hero h1 .line{display:block}
+    .hero p{font-size:1.15rem;max-width:620px;margin-bottom:var(--space-5);color:#9BA8BF}
+    .hero-buttons{display:flex;gap:16px;flex-wrap:wrap}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:14px 0;background:rgba(10,22,40,.7);backdrop-filter:blur(10px)}
+    .nav-inner{max-width:var(--container);margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .nav-logo-img{height:44px;width:auto;display:block}
+  </style>
+
   <!-- Analytics is loaded lazily — after first user interaction or 5s idle. Keeps TBT low. -->
   <script>
     (function () {
