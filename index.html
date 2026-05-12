@@ -19,6 +19,10 @@
   <!-- GSC verification placeholder — replace REPLACE_ME with your Search Console verification code once Phase 0 is done -->
   <!-- <meta name="google-site-verification" content="REPLACE_ME"> -->
 
+  <!-- Security: CSP covers csp-xss audit. Loose on script-src/style-src because we use Google Fonts, inline JSON-LD, and an inline host-trigger script. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; img-src 'self' data: https:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://forms-api.reachscreens.ca https://tiles.openfreemap.org https://www.google-analytics.com https://region1.google-analytics.com; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://forms-api.reachscreens.ca; upgrade-insecure-requests">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://tiles.openfreemap.org" crossorigin>
