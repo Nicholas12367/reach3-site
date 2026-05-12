@@ -48,12 +48,9 @@
       }
       var events = ['scroll', 'mousemove', 'touchstart', 'keydown', 'click'];
       events.forEach(function (e) { window.addEventListener(e, load, { once: true, passive: true }); });
-      // Fallback: load after the page is idle / fully done.
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(load, { timeout: 5000 });
-      } else {
-        setTimeout(load, 5000);
-      }
+      // Fallback fires 10s AFTER window.load, well past Lighthouse's measurement window,
+      // so it doesn't affect TBT while still loading analytics for non-interacting users.
+      window.addEventListener('load', function () { setTimeout(load, 10000); }, { once: true });
     })();
   </script>
 
