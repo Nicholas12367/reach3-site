@@ -210,9 +210,28 @@
     }[c]));
   }
 
+  // Defer boot until the map section scrolls into view (or near it).
+  // This avoids paying MapLibre's ~3s of Map() construction cost during
+  // initial page load — a big TBT win on mobile.
+  function scheduleBoot() {
+    const target = document.querySelector('.map-wrap') || document.getElementById('map');
+    if (!target) return;
+    if (!('IntersectionObserver' in window)) return boot();
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          io.disconnect();
+          // Wait a tick so the click event that triggered the scroll finishes
+          requestAnimationFrame(boot);
+        }
+      });
+    }, { rootMargin: '300px 0px' });
+    io.observe(target);
+  }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', boot);
+    document.addEventListener('DOMContentLoaded', scheduleBoot);
   } else {
-    boot();
+    scheduleBoot();
   }
 })();
