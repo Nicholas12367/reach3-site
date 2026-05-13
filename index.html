@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lloydminster Digital Advertising | Indoor Screen Ads — Reach Screens</title>
-  <meta name="description" content="Reach Screens runs Lloydminster's local digital advertising network — indoor screens inside the restaurants, salons, gyms, auto shops, and waiting rooms your customers already visit. From $1 per 1,000 views. Free ad design included. Serving Lloydminster, Vermilion, Bonnyville, Cold Lake, and the Lakeland.">
-  <meta name="keywords" content="Lloydminster advertising, digital advertising Lloydminster, advertising Lloydminster, local advertising Lloydminster, digital signage Lloydminster, indoor advertising Lloydminster, screen advertising Lloydminster, TV advertising Lloydminster, small business advertising Lloydminster, marketing Lloydminster, advertising agency Lloydminster, DOOH Lloydminster, digital out of home Alberta, digital billboards Lloydminster, restaurant advertising Lloydminster, retail advertising Lloydminster, advertise my business Lloydminster, where to advertise Lloydminster, cheap advertising Lloydminster, Reach Screens">
+  <title>Digital Signage Lloydminster | Indoor Screen Advertising on Local TVs — Reach Screens</title>
+  <meta name="description" content="Reach Screens runs Lloydminster's only indoor digital advertising network — screens inside the restaurants, salons, gyms, auto shops, retail floors, and waiting rooms your customers already visit. Free ad design included. Serving Lloydminster, Vermilion, Bonnyville, Cold Lake, St. Paul, and the wider Lakeland.">
+  <meta name="keywords" content="digital signage Lloydminster, indoor advertising Lloydminster, in-store advertising Lloydminster, screen advertising Lloydminster, TV advertising Lloydminster, restaurant TV advertising Lloydminster, waiting room advertising Lloydminster, digital display ads Lloydminster, LED display advertising Lloydminster, digital billboard Lloydminster, digital advertising Lloydminster, advertising Lloydminster, advertising agency Lloydminster, marketing agency Lloydminster, digital marketing agency Lloydminster, advertise my business Lloydminster, where to advertise in Lloydminster, how to advertise in Lloydminster, digital signage network Lloydminster, digital out of home Lloydminster, DOOH Lloydminster, digital menu boards Lloydminster, gym TV advertising Lloydminster, dental office TV ads Lloydminster, Yodeck Lloydminster, Border City advertising, Lloyd advertising, Lakeland advertising, Alberta-Saskatchewan border advertising, Lloydminster AB SK advertising, Reach Screens">
   <meta name="author" content="Reach Screens">
   <meta name="geo.region" content="CA-AB">
   <meta name="geo.placename" content="Lloydminster">
@@ -16,7 +16,7 @@
   <!-- Open Graph -->
   <meta property="og:site_name" content="Reach Screens">
   <meta property="og:title" content="Lloydminster Digital Advertising | Indoor Screen Ads — Reach Screens">
-  <meta property="og:description" content="Local digital advertising on indoor screens across Lloydminster's restaurants, salons, gyms, and waiting rooms. From $1 per 1,000 views. Free ad design included.">
+  <meta property="og:description" content="Lloydminster's only indoor digital advertising network — screens inside the restaurants, salons, gyms, auto shops, and waiting rooms your customers already visit. Free ad design included.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_CA">
   <meta property="og:url" content="https://reach3.reachscreens.ca/">
@@ -26,7 +26,7 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Lloydminster Digital Advertising | Reach Screens">
-  <meta name="twitter:description" content="Indoor screens in the businesses Lloydminster locals already visit every day. From $1 per 1,000 views. Free ad design.">
+  <meta name="twitter:description" content="Indoor digital screens in the local Lloydminster businesses your customers already visit every day. Free ad design included.">
   <meta name="twitter:image" content="https://reach3.reachscreens.ca/assets/photo-1.webp">
 
   <meta name="theme-color" content="#FFFFFF">
@@ -45,10 +45,14 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=optional"></noscript>
 
   <!-- Main stylesheet — non-blocking via media swap, with noscript fallback -->
-  <link rel="preload" as="style" href="styles.css?v=24" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="styles.css?v=24"></noscript>
+  <link rel="preload" as="style" href="styles.css?v=26" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="styles.css?v=26"></noscript>
 
   <link rel="icon" href="assets/favicon.ico">
+
+  <!-- MapLibre deps are loaded lazily by map.js when the map section nears the viewport.
+       Keeps initial-load TBT low (MapLibre is heavy on main thread). -->
+  <link rel="dns-prefetch" href="https://unpkg.com">
 
   <!-- Analytics is loaded lazily — after first user interaction or 5s idle. Keeps TBT low. -->
   <script>
@@ -140,7 +144,7 @@
         "@id": "https://reach3.reachscreens.ca/#business",
         "name": "Reach Screens",
         "alternateName": "Reach Screens Lloydminster",
-        "description": "Lloydminster's local indoor digital advertising network. Screen ads inside the restaurants, salons, gyms, auto shops, and waiting rooms locals visit every day. From $1 per 1,000 views with free ad design.",
+        "description": "Lloydminster's only indoor digital advertising network. Screen ads inside the restaurants, salons, gyms, auto shops, retail floors, and waiting rooms locals visit every day. Free ad design included with every campaign.",
         "image": [
           "https://reach3.reachscreens.ca/assets/photo-1.webp",
           "https://reach3.reachscreens.ca/assets/photo-3.webp",
@@ -212,7 +216,7 @@
                 "description": "Steady, always-on local presence on indoor screens — builds top-of-mind awareness for service-area businesses."
               },
               "priceCurrency": "CAD",
-              "priceSpecification": { "@type": "PriceSpecification", "description": "From $1 per 1,000 ad views — multi-month rollouts available." }
+              "priceSpecification": { "@type": "PriceSpecification", "description": "Custom — multi-month rollouts available. Contact for a quote." }
             },
             {
               "@type": "Offer",
@@ -222,7 +226,7 @@
                 "description": "Maximum coverage — your ad runs on every screen in the Reach Screens network across Lloydminster."
               },
               "priceCurrency": "CAD",
-              "priceSpecification": { "@type": "PriceSpecification", "description": "From $5 per 1,000 ad views — full network access plus unlimited creative updates." }
+              "priceSpecification": { "@type": "PriceSpecification", "description": "Custom — full network access. Contact for a quote." }
             },
             {
               "@type": "Offer",
@@ -262,7 +266,7 @@
           { "@type": "AdministrativeArea", "name": "Saskatchewan" }
         ],
         "serviceType": "Digital out of home advertising",
-        "description": "Indoor digital screen advertising for local Lloydminster businesses. Your ad plays inside the restaurants, salons, gyms, waiting rooms, retail floors, and service businesses your customers already visit. Free ad design included. From $1 per 1,000 views.",
+        "description": "Indoor digital screen advertising for local Lloydminster businesses. Your ad plays inside the restaurants, salons, gyms, waiting rooms, retail floors, and service businesses your customers already visit. Free ad design included. Contact us for a custom quote built around your campaign idea.",
         "audience": {
           "@type": "BusinessAudience",
           "audienceType": "Local small and mid-size businesses, restaurants, retail, contractors, professional services, healthcare, automotive"
@@ -272,7 +276,7 @@
           "priceCurrency": "CAD",
           "priceSpecification": {
             "@type": "PriceSpecification",
-            "description": "From $1 to $5 per 1,000 ad views. Custom rollout built around your idea, audience, and timing."
+            "description": "Custom — every rollout is built around your idea, audience, and timing. Contact us for a quote."
           }
         }
       },
@@ -297,11 +301,6 @@
           },
           {
             "@type": "Question",
-            "name": "How much does digital advertising cost in Lloydminster?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Reach Screens campaigns typically run between $1 and $5 per 1,000 views — a fraction of what social media (≈$40 CPM), radio (≈$175 CPM), billboards (≈$200 CPM), newspaper (≈$240 CPM), or local TV (≈$720 CPM) cost in the Lloydminster market. Tell us your budget and we build a plan that fits inside it." }
-          },
-          {
-            "@type": "Question",
             "name": "Where can I advertise my Lloydminster business?",
             "acceptedAnswer": { "@type": "Answer", "text": "Reach Screens runs ads inside local Lloydminster venues your customers already visit — pubs, restaurants, coffee shops, barbershops, salons, gyms, pharmacies, auto shops, car washes, and waiting rooms. Open the live map on this page to see every screen location across the city." }
           },
@@ -318,7 +317,7 @@
           {
             "@type": "Question",
             "name": "Can I update my ad during the campaign?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Higher tiers include multiple ad updates per year, and our top tier includes unlimited updates — so when your special, your hours, or your offer changes, your ad changes with it." }
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes — ad updates are part of every Reach Screens campaign. When your hours, your special, or your offer changes, your ad changes with it. Contact us for the specifics on your campaign." }
           },
           {
             "@type": "Question",
@@ -349,11 +348,6 @@
             "@type": "Question",
             "name": "Can my business host a Reach Screens display?",
             "acceptedAnswer": { "@type": "Answer", "text": "Yes — if you have foot traffic and a good wall, you can host a Reach Screens display at zero cost. We cover installation, content, and maintenance. Hosts get free ad rotation for their own business across the network as part of the partnership." }
-          },
-          {
-            "@type": "Question",
-            "name": "Is there a long-term contract?",
-            "acceptedAnswer": { "@type": "Answer", "text": "No long-term lock-in is required. We build the rollout that fits your campaign — a single event, a seasonal push, or steady always-on awareness — and you decide how long to run it." }
           },
           {
             "@type": "Question",
@@ -399,6 +393,7 @@
 <!-- ============================================================
      STEP 1 — OPEN (Attention)
      Goal: stop the scroll. Outcome-led headline. Soft CTA only.
+     Visual: a realistic indoor display mock-up cycling sample ads.
      ============================================================ -->
 <section class="hero" aria-labelledby="hero-headline">
   <div class="hero-bg">
@@ -411,7 +406,7 @@
   <div class="container hero-content hero-content-left">
     <div class="hero-badge">
       <span class="hero-badge-dot"></span>
-      Now Live Across Lloydminster
+      Now Live Across Lloydminster &middot; The Border City
     </div>
     <h1 id="hero-headline">
       <span class="line">Your Ad. Everywhere</span>
@@ -424,6 +419,56 @@
         <svg class="btn-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 3a.75.75 0 01.75.75v10.638l3.96-4.158a.75.75 0 111.08 1.04l-5.25 5.5a.75.75 0 01-1.08 0l-5.25-5.5a.75.75 0 111.08-1.04l3.96 4.158V3.75A.75.75 0 0110 3z"/></svg>
       </a>
       <a href="#idea" class="btn btn-secondary btn-lg">Submit Your Idea</a>
+    </div>
+  </div>
+
+  <!-- Hero Screen — a realistic indoor display cycling through sample local ads -->
+  <div class="hero-screen" aria-hidden="true">
+    <div class="hero-screen-glow"></div>
+    <div class="hero-screen-tv">
+      <div class="hero-screen-bezel"></div>
+      <div class="hero-screen-stand"></div>
+      <div class="hero-screen-panel">
+        <div class="hero-screen-glare"></div>
+        <div class="hero-screen-ticker">
+          <span class="hero-screen-dot"></span> NOW PLAYING — REACH SCREENS LLOYDMINSTER
+        </div>
+
+        <div class="hero-ad ad-1">
+          <span class="ad-eyebrow">Grand Opening</span>
+          <span class="ad-title">Sage &amp; Soul</span>
+          <span class="ad-sub">Downtown wellness studio · Sept 14</span>
+          <span class="ad-cta">Walk in. Unwind.</span>
+        </div>
+
+        <div class="hero-ad ad-2">
+          <span class="ad-eyebrow">Weekend Special</span>
+          <span class="ad-title">Neighbours Pub</span>
+          <span class="ad-sub">$12 wing-and-pint nights · Thu–Sat</span>
+          <span class="ad-cta">Pull up a stool.</span>
+        </div>
+
+        <div class="hero-ad ad-3">
+          <span class="ad-eyebrow">Seasonal Tires</span>
+          <span class="ad-title">Fountain Tire</span>
+          <span class="ad-sub">$50 off winter changeovers · Oct only</span>
+          <span class="ad-cta">Book your fit.</span>
+        </div>
+
+        <div class="hero-ad ad-4">
+          <span class="ad-eyebrow">New Patient Promo</span>
+          <span class="ad-title">Border City Dental</span>
+          <span class="ad-sub">Same-week appointments · Hwy 17</span>
+          <span class="ad-cta">Smile bigger.</span>
+        </div>
+
+        <div class="hero-ad ad-5">
+          <span class="ad-eyebrow">Live This Friday</span>
+          <span class="ad-title">Cheers Live</span>
+          <span class="ad-sub">Country &amp; classic-rock duo · 9 pm</span>
+          <span class="ad-cta">Doors at 7.</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -675,8 +720,8 @@
           <p>Avg. Viewer Dwell Time</p>
         </div>
         <div class="stat-item reveal">
-          <h3>$<span data-count="0.21">0</span></h3>
-          <p>Cost Per Ad Run</p>
+          <h3><span data-count="6">0</span></h3>
+          <p>Industries Hosting Screens</p>
         </div>
       </div>
     </div>
@@ -766,8 +811,8 @@
             <td><span class="compare-name">Reach Screens</span><span class="compare-badge">Best Value</span></td>
             <td>
               <div class="cost-cell">
-                <span class="cost-bar cost-bar-rs" style="--w: 1%;"></span>
-                <span class="cost-value">$1 to $5</span>
+                <span class="cost-bar cost-bar-rs" style="--w: 4%;"></span>
+                <span class="cost-value">Custom — contact us</span>
               </div>
             </td>
             <td>15+ minutes (captive)</td>
@@ -837,7 +882,7 @@
     </div>
 
     <div class="text-center mt-5 reveal">
-      <p class="compare-callout">Up to <span class="text-gradient compare-callout-num">144× cheaper</span> than local TV, with the captive attention every other channel can't match.</p>
+      <p class="compare-callout">A small fraction of the cost of <span class="text-gradient compare-callout-num">every other channel</span> — with the captive attention they can't match. <a href="#idea" style="color: inherit; text-decoration: underline; text-underline-offset: 4px;">Tell us your idea</a> and we'll come back with the rollout that fits your budget.</p>
     </div>
   </div>
 </section>
@@ -856,7 +901,7 @@
     <div class="grid-3 stagger">
       <div class="card" data-tilt="4">
         <h3 class="card-title">Restaurants, Bars &amp; Cafes</h3>
-        <p class="card-text">Restaurant advertising in Lloydminster — promote daily specials, drink features, brunch menus, live music nights, and seasonal events to local diners while they're already making "where should we eat" decisions.</p>
+        <p class="card-text">Restaurant TV advertising in Lloydminster — daily specials, drink features, brunch menus, live music nights, and digital menu boards delivered to local diners while they're already making "where should we eat" decisions.</p>
       </div>
       <div class="card" data-tilt="4">
         <h3 class="card-title">Auto Dealers &amp; Repair</h3>
@@ -872,7 +917,7 @@
       </div>
       <div class="card" data-tilt="4">
         <h3 class="card-title">Healthcare &amp; Wellness</h3>
-        <p class="card-text">Dentist advertising, chiropractor advertising, physio, optometry, and wellness advertising in Lloydminster — new-patient promotions and seasonal campaigns running inside complementary local venues.</p>
+        <p class="card-text">Dental office TV ads, chiropractor advertising, physio, optometry, and wellness advertising in Lloydminster — waiting-room screens and new-patient promotions running inside complementary local venues across the Border City.</p>
       </div>
       <div class="card" data-tilt="4">
         <h3 class="card-title">Retail &amp; Salons</h3>
@@ -880,7 +925,7 @@
       </div>
       <div class="card" data-tilt="4">
         <h3 class="card-title">Gyms &amp; Fitness</h3>
-        <p class="card-text">Gym advertising and fitness studio advertising in Lloydminster — January push, summer challenges, new-member promotions, and personal-training launches delivered to people already in nearby venues.</p>
+        <p class="card-text">Gym TV advertising in Lloydminster, fitness studio screens, January push, summer challenges, new-member promotions, and personal-training launches delivered to people already in nearby venues.</p>
       </div>
       <div class="card" data-tilt="4">
         <h3 class="card-title">Events &amp; Tourism</h3>
@@ -907,8 +952,8 @@
 
     <div class="grid-3 stagger">
       <div class="card">
-        <h3 class="card-title">Lloydminster, AB / SK</h3>
-        <p class="card-text">The home market — digital advertising across Lloydminster's busiest indoor venues on both the Alberta and Saskatchewan sides of the border. Every Reach Screens display is inside the city.</p>
+        <h3 class="card-title">Lloydminster, AB / SK — The Border City</h3>
+        <p class="card-text">The home market — digital signage Lloydminster locals already see every day. Indoor screen advertising across the Border City's busiest venues on both the Alberta and Saskatchewan sides of the Alberta-Saskatchewan border. Every Reach Screens display is inside the city.</p>
       </div>
       <div class="card">
         <h3 class="card-title">Vermilion, AB</h3>
@@ -957,10 +1002,6 @@
 
     <div class="faq reveal">
       <div class="faq-item">
-        <button class="faq-q">Will it actually fit my budget?<span class="faq-icon" aria-hidden="true"></span></button>
-        <div class="faq-a"><div class="faq-a-inner">Local campaigns on Reach Screens typically cost between $1 and $5 per 1,000 views — a fraction of what social media, radio, billboards, or local TV cost. Tell us your budget and what you want to promote, and we'll come back with a plan that fits inside it.</div></div>
-      </div>
-      <div class="faq-item">
         <button class="faq-q">What if I don't have an ad designed yet?<span class="faq-icon" aria-hidden="true"></span></button>
         <div class="faq-a"><div class="faq-a-inner">We design the ad for you, free, included in every package. You tell us what you want to promote, we handle the rest. No production fees, no hidden costs, no need to hire a designer.</div></div>
       </div>
@@ -974,7 +1015,7 @@
       </div>
       <div class="faq-item">
         <button class="faq-q">Can I change my ad during the campaign?<span class="faq-icon" aria-hidden="true"></span></button>
-        <div class="faq-a"><div class="faq-a-inner">Depending on your package, yes. Higher tiers include multiple ad updates per year, and our top tier includes unlimited updates — so when your special, your hours, or your offer changes, your ad changes with it.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Yes — ad updates are part of every Reach Screens campaign. When your hours, your special, or your offer changes, your ad changes with it. <a href="#idea">Contact us</a> for the specifics on your campaign.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">Where exactly are the screens?<span class="faq-icon" aria-hidden="true"></span></button>
@@ -983,10 +1024,6 @@
       <div class="faq-item">
         <button class="faq-q">What if it's not for me?<span class="faq-icon" aria-hidden="true"></span></button>
         <div class="faq-a"><div class="faq-a-inner">No pressure, no commitment. Tell us your idea, we'll build a recommendation for free within 48 hours. If it's not the right fit, you've lost nothing — and we'll point you in a direction that might be better suited.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">How much does digital advertising cost in Lloydminster?<span class="faq-icon" aria-hidden="true"></span></button>
-        <div class="faq-a"><div class="faq-a-inner">Reach Screens campaigns typically run between $1 and $5 per 1,000 views — a fraction of social media (~$40 CPM), radio (~$175 CPM), billboards (~$200 CPM), newspaper (~$240 CPM), or local TV (~$720 CPM) in the Lloydminster market. Tell us your budget and we build a plan that fits inside it.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">Is this the same as a digital billboard?<span class="faq-icon" aria-hidden="true"></span></button>
@@ -1267,7 +1304,7 @@
         <ul>
           <li><a href="tel:3065143752">306-514-3752</a></li>
           <li><a href="mailto:info@reachscreens.ca">info@reachscreens.ca</a></li>
-          <li style="color: var(--color-text-dim); font-size:14px; padding-top: 6px;">P.O. Box 11238<br>Lloydminster, AB T9V 3B5</li>
+          <li style="color: var(--color-text-muted); font-size:14px; padding-top: 6px;">P.O. Box 11238<br>Lloydminster, AB T9V 3B5</li>
         </ul>
       </div>
     </div>
@@ -1296,6 +1333,6 @@
 </script>
 
 <script src="main.js?v=19" defer></script>
-<script src="map.js?v=12" defer></script>
+<script src="map.js?v=14" defer></script>
 </body>
 </html>
