@@ -1,5 +1,5 @@
 /* ============================================
-   REACH SCREENS — Interactions
+   REACH SCREENS, Interactions
    ============================================ */
 
 (function () {
@@ -402,7 +402,7 @@
       if (!line) return;
       const rect = timeline.getBoundingClientRect();
       const vh = window.innerHeight;
-      // Don't update timelines that are hidden (display:none in inactive tab panels) — getBoundingClientRect returns 0s anyway, but skip explicitly
+      // Don't update timelines that are hidden (display:none in inactive tab panels), getBoundingClientRect returns 0s anyway, but skip explicitly
       if (rect.height === 0) {
         line.style.height = '0%';
         return;

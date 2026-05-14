@@ -1,5 +1,5 @@
 /* ============================================
-   REACH SCREENS — Premium Design System (LIGHT)
+   REACH SCREENS, Premium Design System (LIGHT)
    ============================================ */
 
 /* Inter font is loaded via <link rel="stylesheet"> in index.html so it can be made non-blocking. */
@@ -28,8 +28,8 @@
 
   /* Text */
   --color-text: #0A1628;
-  --color-text-muted: #475569;       /* slate-600 — passes contrast on white */
-  --color-text-dim: #475569;         /* slate-600 — passes WCAG AA on white */
+  --color-text-muted: #475569;       /* slate-600, passes contrast on white */
+  --color-text-dim: #475569;         /* slate-600, passes WCAG AA on white */
   --color-heading: #0A1628;
 
   /* Accent gradient stops */
@@ -312,7 +312,7 @@ section {
 
 .nav-logo { display: flex; align-items: center; transition: transform 0.3s var(--ease); }
 .nav-logo:hover { transform: scale(1.03); }
-/* Logo asset is white-on-transparent — recolor to the brand navy for light theme */
+/* Logo asset is white-on-transparent, recolor to the brand navy for light theme */
 .nav-logo-img {
   height: 44px;
   width: auto;
@@ -444,7 +444,7 @@ section {
   z-index: 0;
 }
 
-/* Animated gradient mesh — pastel teal/blue on white */
+/* Animated gradient mesh, pastel teal/blue on white */
 .hero-mesh {
   position: absolute;
   inset: -10%;
@@ -462,7 +462,7 @@ section {
   66% { transform: translate(3%, -2%) scale(0.98); }
 }
 
-/* Glowing dot field — abstract "screen network" feel */
+/* Glowing dot field, abstract "screen network" feel */
 .hero-dots {
   position: absolute;
   inset: 0;
@@ -592,7 +592,7 @@ section {
 }
 
 /* ============================================
-   HERO SCREEN — realistic indoor display mockup
+   HERO SCREEN, realistic indoor display mockup
    ============================================ */
 
 .hero-screen {
@@ -619,7 +619,7 @@ section {
   animation: glowBreath 6s ease-in-out infinite;
 }
 
-/* The TV body — bezel + panel + stand */
+/* The TV body, bezel + panel + stand */
 .hero-screen-tv {
   position: relative;
   width: 100%;
@@ -635,7 +635,7 @@ section {
     inset 0 -1px 0 rgba(0, 0, 0, 0.4);
 }
 
-/* Bezel highlight — subtle reflective sheen */
+/* Bezel highlight, subtle reflective sheen */
 .hero-screen-bezel {
   position: absolute;
   inset: 0;
@@ -724,7 +724,7 @@ section {
   animation: dotPulse 2s ease infinite;
 }
 
-/* Each cycling ad — fades and slides */
+/* Each cycling ad, fades and slides */
 .hero-ad {
   position: absolute;
   inset: 50px 22px 22px;
@@ -812,7 +812,7 @@ section {
   .hero-content { max-width: 100%; }
 }
 
-/* Respect reduced-motion preferences — pause the cycle without hiding the screen */
+/* Respect reduced-motion preferences, pause the cycle without hiding the screen */
 @media (prefers-reduced-motion: reduce) {
   .hero-screen { animation: fadeIn 0.5s linear forwards; }
   .hero-ad { animation: none; opacity: 1; transform: none; }
@@ -962,7 +962,7 @@ section {
 .card-text { color: var(--color-text-muted); font-size: 15px; line-height: 1.65; }
 
 /* ============================================
-   Location Gallery — Masonry-style
+   Location Gallery, Masonry-style
    ============================================ */
 
 .gallery-grid {
@@ -1256,7 +1256,7 @@ section {
   to { transform: translateX(-50%); }
 }
 
-/* Logo marquee (social proof) — fixed-width items, seamless loop */
+/* Logo marquee (social proof), fixed-width items, seamless loop */
 .logo-marquee-section {
   padding: var(--space-5) 0;
   background: var(--color-bg);
@@ -1307,7 +1307,7 @@ section {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
-  /* Show partner logos in full colour — these are real businesses we already host */
+  /* Show partner logos in full colour, these are real businesses we already host */
   filter: none;
   opacity: 1;
   transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
@@ -1317,7 +1317,7 @@ section {
   box-shadow: var(--shadow-md);
 }
 .logo-marquee-item img {
-  max-height: 72px;
+  max-height: 76px;
   max-width: 100%;
   width: auto;
   height: auto;
@@ -1331,9 +1331,22 @@ section {
   white-space: nowrap;
   text-align: center;
 }
+/* Per-logo overrides */
+.logo-marquee-item.logo-xl img {       /* Border City Dental, Sage & Soul: fill more of the card */
+  max-height: 96px;
+}
+.logo-marquee-item.logo-dark {         /* In2Golf: pale-yellow brand needs a dark card to be visible */
+  background: #0A1628;
+  border-color: rgba(255, 255, 255, 0.06);
+}
+.logo-marquee-item.logo-dark img {     /* IN2GOLF wordmark fills the dark card */
+  max-height: 86px;
+}
 @media (max-width: 700px) {
   .logo-marquee-item { width: 180px; height: 90px; padding: 12px 16px; margin: 0 10px; }
-  .logo-marquee-item img { max-height: 58px; }
+  .logo-marquee-item img { max-height: 60px; }
+  .logo-marquee-item.logo-xl img { max-height: 76px; }
+  .logo-marquee-item.logo-dark img { max-height: 68px; }
   .logo-marquee-item.text-logo { font-size: 17px; }
 }
 
@@ -1402,7 +1415,7 @@ section {
 }
 
 /* ============================================
-   CTA Banner (host-a-screen, etc.) — kept dark for visual contrast
+   CTA Banner (host-a-screen, etc.), kept dark for visual contrast
    ============================================ */
 
 .cta-banner {
@@ -1930,7 +1943,7 @@ section {
 }
 
 /* ============================================
-   CTA Banner — Rich variant w/ floating screen mockups
+   CTA Banner, Rich variant w/ floating screen mockups
    ============================================ */
 
 .cta-banner-rich {
@@ -1984,7 +1997,7 @@ section {
   to { background-position: 48px 48px; }
 }
 
-/* Floating screen mockups in CTA — kept dark; they represent real TV screens */
+/* Floating screen mockups in CTA, kept dark; they represent real TV screens */
 .cta-screen {
   position: absolute;
   width: 200px;
@@ -2079,7 +2092,7 @@ section {
 }
 
 /* ============================================
-   MAP — Lloydminster Screen Map (MapLibre)
+   MAP, Lloydminster Screen Map (MapLibre)
    ============================================ */
 
 .map-section {
@@ -2142,7 +2155,7 @@ section {
   animation: dotPulse 2s ease infinite;
 }
 
-/* Custom screen marker — 44x44 minimum tap target (WCAG AAA / iOS guideline) */
+/* Custom screen marker, 44x44 minimum tap target (WCAG AAA / iOS guideline) */
 .screen-marker {
   position: relative;
   width: 44px;
@@ -2184,7 +2197,7 @@ section {
   100% { transform: scale(1.6); opacity: 0; }
 }
 
-/* MapLibre popup overrides — match brand */
+/* MapLibre popup overrides, match brand */
 .maplibregl-popup-content {
   background: rgba(255, 255, 255, 0.98) !important;
   backdrop-filter: blur(14px);
@@ -2226,7 +2239,7 @@ section {
   padding: 4px 8px !important;
 }
 
-/* MapLibre nav controls — light theme */
+/* MapLibre nav controls, light theme */
 .maplibregl-ctrl-group {
   background: rgba(255, 255, 255, 0.92) !important;
   backdrop-filter: blur(10px);
@@ -2333,7 +2346,7 @@ section {
 }
 
 /* ============================================
-   Contact form — Locations picker
+   Contact form, Locations picker
    ============================================ */
 
 .form-locations-toggle {
@@ -2455,7 +2468,7 @@ section {
 }
 
 /* ============================================
-   "What Happens Next" section + Step Host — light surface
+   "What Happens Next" section + Step Host, light surface
    ============================================ */
 
 #next { background: var(--color-bg-2); }
@@ -2463,8 +2476,8 @@ section {
 .step-host  { background: var(--color-bg); }
 
 /* ============================================
-   Mobile collapse — Industries + Service Areas
-   On mobile only, hide cards 5–9 behind a "Show all" button.
+   Mobile collapse, Industries + Service Areas
+   On mobile only, hide cards 5 to 9 behind a "Show all" button.
    Desktop renders all cards normally.
    ============================================ */
 .mobile-collapse-trigger {
