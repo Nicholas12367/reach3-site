@@ -28,7 +28,7 @@
       container: 'map',
       style: 'https://tiles.openfreemap.org/styles/liberty',
       center: [-110.0050, 53.2783],
-      zoom: 13,
+      zoom: 14,
       pitch: 0,
       bearing: 0,
       antialias: true,
@@ -88,20 +88,26 @@
   }
 
   function addBuildings(map) {
-    if (!map.isStyleLoaded()) {
-      // Style not ready, wait for next idle and try again
-      map.once('idle', () => addBuildings(map));
-      return;
-    }
-
     // The OpenFreeMap "liberty" style ships with a built-in `building-3d`
     // fill-extrusion layer. Instead of adding our own, override the paint
     // properties of the existing layer so the buildings render in the
     // Reach Screens navy palette over the light tile base.
-    const existingBuildingLayer = map.getLayer('building-3d') ? 'building-3d'
-      : (map.getLayer('building') ? 'building' : null);
-
-    if (existingBuildingLayer) {
+    //
+    // We poll for the layer rather than relying on a single 'idle' event,
+    // because some MapLibre/style combos never fire 'idle' early enough
+    // for setPaintProperty to take effect.
+    let attempts = 0;
+    function tryRecolor() {
+      attempts++;
+      const existingBuildingLayer = map.getLayer('building-3d') ? 'building-3d'
+        : (map.getLayer('building') ? 'building' : null);
+      if (!existingBuildingLayer) {
+        if (attempts < 40) {
+          setTimeout(tryRecolor, 250);
+          return;
+        }
+        return addBuildingsFallbackAdd(map);
+      }
       try {
         map.setPaintProperty(existingBuildingLayer, 'fill-extrusion-color', [
           'interpolate', ['linear'], ['coalesce', ['get', 'render_height'], 4],
@@ -117,10 +123,18 @@
           try { map.setLayerZoomRange(existingBuildingLayer, 12, 24); } catch (_) {}
         }
       } catch (e) {
-        console.warn('[RS-MAP] could not recolor existing 3D buildings:', e.message);
+        if (attempts < 40) {
+          setTimeout(tryRecolor, 250);
+        } else {
+          console.warn('[RS-MAP] could not recolor 3D buildings after retries:', e.message);
+        }
       }
-      return;
     }
+    tryRecolor();
+    return;
+  }
+
+  function addBuildingsFallbackAdd(map) {
 
     // Fallback: liberty style not present, add our own layer
     if (map.getLayer('rs-buildings-3d')) return;
