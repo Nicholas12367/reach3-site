@@ -452,4 +452,28 @@
     updateAll();
   }
 
+  // ============================================================
+  // Mobile "Show all" toggle for Industries + Service Areas grids
+  // Each trigger button has data-target="<section-id>".
+  // Tapping toggles `.expanded` on the section's `.mobile-collapse`
+  // grid and flips aria-expanded on the button.
+  // ============================================================
+  document.querySelectorAll('.mobile-collapse-trigger .mobile-show-more-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const trigger = btn.closest('.mobile-collapse-trigger');
+      const sectionId = trigger && trigger.getAttribute('data-target');
+      const section = sectionId ? document.getElementById(sectionId) : null;
+      if (!section) return;
+      const grid = section.querySelector('.mobile-collapse');
+      if (!grid) return;
+      const expanded = grid.classList.toggle('expanded');
+      btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      const label = btn.querySelector('.more-label');
+      if (label) {
+        const total = grid.querySelectorAll('.card').length;
+        label.textContent = expanded ? 'Show less' : ('Show all ' + total + (sectionId === 'industries' ? ' industries' : ' service areas'));
+      }
+    });
+  });
+
 })();

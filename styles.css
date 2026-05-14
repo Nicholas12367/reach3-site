@@ -1299,18 +1299,25 @@ section {
   justify-content: center;
   flex: 0 0 auto;
   width: 220px;
-  height: 90px;
-  padding: 0 28px;
+  height: 110px;
+  padding: 16px 22px;
+  margin: 0 14px;
+  /* Soft slate card so white-on-transparent logos stay visible on white page bg */
+  background: #F4F8FB;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
   /* Show partner logos in full colour — these are real businesses we already host */
   filter: none;
   opacity: 1;
-  transition: transform 0.3s var(--ease);
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
 }
 .logo-marquee-item:hover {
-  transform: scale(1.06);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 .logo-marquee-item img {
-  max-height: 60px;
+  max-height: 72px;
   max-width: 100%;
   width: auto;
   height: auto;
@@ -1325,8 +1332,8 @@ section {
   text-align: center;
 }
 @media (max-width: 700px) {
-  .logo-marquee-item { width: 170px; height: 72px; padding: 0 18px; }
-  .logo-marquee-item img { max-height: 48px; }
+  .logo-marquee-item { width: 180px; height: 90px; padding: 12px 16px; margin: 0 10px; }
+  .logo-marquee-item img { max-height: 58px; }
   .logo-marquee-item.text-logo { font-size: 17px; }
 }
 
@@ -2454,3 +2461,38 @@ section {
 #next { background: var(--color-bg-2); }
 .step-close { background: var(--color-bg); }
 .step-host  { background: var(--color-bg); }
+
+/* ============================================
+   Mobile collapse — Industries + Service Areas
+   On mobile only, hide cards 5–9 behind a "Show all" button.
+   Desktop renders all cards normally.
+   ============================================ */
+.mobile-collapse-trigger {
+  display: none; /* hidden on desktop, revealed on mobile via media query */
+  text-align: center;
+  margin-top: var(--space-3);
+}
+.mobile-show-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  min-height: 44px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.mobile-show-more-btn .more-chev {
+  transition: transform 0.25s var(--ease);
+}
+.mobile-show-more-btn[aria-expanded="true"] .more-chev {
+  transform: rotate(180deg);
+}
+
+@media (max-width: 640px) {
+  /* Hide overflow cards by default on mobile */
+  .mobile-collapse .card.mobile-extra { display: none; }
+  /* When the group is .expanded, show them */
+  .mobile-collapse.expanded .card.mobile-extra { display: block; }
+  /* Reveal the trigger */
+  .mobile-collapse-trigger { display: block; }
+}

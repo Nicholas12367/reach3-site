@@ -124,10 +124,10 @@
         paint: {
           'fill-extrusion-color': [
             'interpolate', ['linear'], ['coalesce', ['get', 'render_height'], 4],
-            0, '#D8E2EC',
-            10, '#C8D4E1',
-            25, '#B6C5D5',
-            60, '#9FB1C5'
+            0, '#1a2540',
+            10, '#243456',
+            25, '#2c4068',
+            60, '#3a5483'
           ],
           'fill-extrusion-height': [
             'interpolate', ['linear'], ['zoom'],
@@ -173,7 +173,7 @@
         '</svg></div>';
       el.setAttribute('role', 'button');
       el.setAttribute('tabindex', '0');
-      el.setAttribute('aria-label', 'Reach Screens location: ' + loc.name);
+      el.setAttribute('aria-label', loc.name);
 
       new maplibregl.Marker({ element: el, anchor: 'center' })
         .setLngLat([loc.lng, loc.lat])
@@ -210,55 +210,9 @@
     }[c]));
   }
 
-  // Lazy-load MapLibre + locations only when the map section is about to scroll
-  // into view. Keeps initial-load TBT low (~3s saved by not parsing MapLibre
-  // up front). Has an idle-time fallback so the map still works for users who
-  // never reach the section.
-  let depsLoaded = false;
-  function loadDeps(cb) {
-    if (depsLoaded) return cb();
-    depsLoaded = true;
-    const css = document.createElement('link');
-    css.rel = 'stylesheet';
-    css.href = 'https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css';
-    document.head.appendChild(css);
-
-    const loc = document.createElement('script');
-    loc.src = 'assets/screen-locations.js?v=4';
-    loc.onload = () => {
-      const ml = document.createElement('script');
-      ml.src = 'https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js';
-      ml.onload = cb;
-      document.body.appendChild(ml);
-    };
-    document.body.appendChild(loc);
-  }
-
-  function start() {
-    loadDeps(() => requestAnimationFrame(boot));
-  }
-
-  function scheduleBoot() {
-    const target = document.querySelector('.map-wrap') || document.getElementById('map');
-    if (!target) return;
-    if (!('IntersectionObserver' in window)) return start();
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          io.disconnect();
-          start();
-        }
-      });
-    }, { rootMargin: '500px 0px' });
-    io.observe(target);
-    // Idle fallback — if the user never reaches the map section, still load it
-    // after a slack timeout (well outside Lighthouse's TBT measurement window).
-    setTimeout(() => { if (!depsLoaded) start(); }, 8000);
-  }
-
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', scheduleBoot);
+    document.addEventListener('DOMContentLoaded', boot);
   } else {
-    scheduleBoot();
+    boot();
   }
 })();

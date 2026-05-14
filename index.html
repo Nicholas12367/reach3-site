@@ -45,14 +45,16 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=optional"></noscript>
 
   <!-- Main stylesheet — non-blocking via media swap, with noscript fallback -->
-  <link rel="preload" as="style" href="styles.css?v=26" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="styles.css?v=26"></noscript>
+  <link rel="preload" as="style" href="styles.css?v=27" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="styles.css?v=27"></noscript>
 
   <link rel="icon" href="assets/favicon.ico">
 
-  <!-- MapLibre deps are loaded lazily by map.js when the map section nears the viewport.
-       Keeps initial-load TBT low (MapLibre is heavy on main thread). -->
+  <!-- MapLibre CSS — non-blocking via media-swap so it doesn't block first paint -->
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css"></noscript>
   <link rel="dns-prefetch" href="https://unpkg.com">
+  <link rel="dns-prefetch" href="https://tiles.openfreemap.org">
 
   <!-- Analytics is loaded lazily — after first user interaction or 5s idle. Keeps TBT low. -->
   <script>
@@ -490,28 +492,28 @@
         <div class="card-icon icon-bounce">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
         </div>
-        <h3 class="card-title">Social ads reach everyone — and no one.</h3>
-        <p class="card-text">A Facebook or Instagram ad gets 1–3 seconds of attention as the user scrolls past. You're paying for thumb-flicks, not customers, and your ad disappears into a feed competing with friends and family.</p>
+        <h3 class="card-title">Social ads burn your budget for 1.7 seconds of attention.</h3>
+        <p class="card-text">Meta and Instagram's own data puts average ad attention at 1.7 seconds — barely long enough to read your headline. Click-through on local feed ads averages 0.9%. You pay $40+ per 1,000 impressions and 99 of every 100 viewers scroll past you to keep watching their cousin's vacation reel. Your money funds Mark Zuckerberg's next yacht. Not your next customer.</p>
       </div>
       <div class="card" data-tilt="5">
         <div class="card-icon icon-bounce">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 10h16"/><path d="M10 4v16"/></svg>
         </div>
-        <h3 class="card-title">Print and flyers feel local but can't be measured.</h3>
-        <p class="card-text">Newspaper and direct-mail feel like the right channel for a local business. But you can't tell who saw it, the design fee eats the budget, and most copies end up in the recycling bin.</p>
+        <h3 class="card-title">Print and flyers end up in the recycling bin.</h3>
+        <p class="card-text">Canada Post's own data says direct-mail flyers average a 1–2% response rate — meaning 98 of every 100 households throw your ad straight into the blue bin, unopened. Newspaper circulation in Western Canada has dropped 50%+ in the last decade, and the few people still reading skip past ads on principle. You pay full price to print waste paper.</p>
       </div>
       <div class="card" data-tilt="5">
         <div class="card-icon icon-bounce">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="1"/><path d="M12 18v3"/><path d="M8 21h8"/></svg>
         </div>
-        <h3 class="card-title">Billboards are built for highways, not neighbourhoods.</h3>
-        <p class="card-text">A big roadside billboard costs more than most local budgets allow, and it's built to be glanced at by drivers at 100 km/h — not seen by the customer who's about to make a buying decision in your part of town.</p>
+        <h3 class="card-title">Highway billboards get a 3-second glance — at 100 km/h.</h3>
+        <p class="card-text">A Lloydminster billboard costs $1,800–$3,500 a month and reaches a driver who's eight seconds away from forgetting your name. OAAA research clocks billboard attention at under 3 seconds per drive-by, no recall test, no buying context. You're paying highway-volume prices to interrupt people whose foot's already on the accelerator.</p>
       </div>
     </div>
 
-    <div class="text-center mt-5 reveal" style="max-width: 720px; margin-left: auto; margin-right: auto;">
+    <div class="text-center mt-5 reveal" style="max-width: 760px; margin-left: auto; margin-right: auto;">
       <p style="font-size: 18px; color: var(--color-text-muted); line-height: 1.6;">
-        None of those are bad channels. They're just not built for a <strong style="color: var(--color-text);">local business advertising to local people</strong>. What you actually need is your ad in front of customers <em>where they already are</em>, while they're already paying attention.
+        Every one of those channels is built to <strong style="color: var(--color-text);">interrupt people who don't want to see you</strong> — feed scrollers, junk-mail dodgers, drivers in a hurry. A local business needs the opposite: your ad in front of customers <em>who are already in the room, sitting still, paying attention</em>. That's a different channel entirely.
       </p>
     </div>
   </div>
@@ -576,18 +578,13 @@
         <div class="logo-marquee-item"><img src="assets/logos/marc-d-up.webp" alt="Marc'd Up Tattoos" loading="lazy" width="400" height="220"></div>
         <div class="logo-marquee-item"><img src="assets/logos/imagine-laser.webp" alt="Imagine Laserworks" loading="lazy" width="243" height="100"></div>
         <div class="logo-marquee-item"><img src="assets/logos/truck-zone.webp" alt="Truck Zone" loading="lazy" width="198" height="79"></div>
-        <div class="logo-marquee-item text-logo">Cheers Live</div>
-        <div class="logo-marquee-item text-logo">Border City Dental</div>
-        <div class="logo-marquee-item text-logo">Sunrise Pharmacy</div>
-        <div class="logo-marquee-item text-logo">Lloyd Hi-Quality Auto</div>
-        <div class="logo-marquee-item text-logo">Diamond Auto</div>
-        <div class="logo-marquee-item text-logo">Sage and Soul</div>
-        <div class="logo-marquee-item text-logo">Hotsul's Ukrainian</div>
-        <div class="logo-marquee-item text-logo">Neighbours Pub</div>
-        <div class="logo-marquee-item text-logo">The Sticks</div>
-        <div class="logo-marquee-item text-logo">Summit Vision Training</div>
-        <div class="logo-marquee-item text-logo">World Class Training</div>
-        <div class="logo-marquee-item text-logo">Mr. Sparkle Car Wash</div>
+        <div class="logo-marquee-item"><img src="assets/logos/cheers-live.webp" alt="Cheers Live" loading="lazy" width="400" height="400"></div>
+        <div class="logo-marquee-item"><img src="assets/logos/border-city-dental.webp" alt="Border City Dental Centre" loading="lazy" width="400" height="400"></div>
+        <div class="logo-marquee-item"><img src="assets/logos/sage-and-soul.webp" alt="Sage &amp; Soul Salon Spa Wellness" loading="lazy" width="400" height="400"></div>
+        <div class="logo-marquee-item"><img src="assets/logos/hotsuls.webp" alt="Hotsul's Ukrainian" loading="lazy" width="400" height="280"></div>
+        <div class="logo-marquee-item"><img src="assets/logos/neighbours-pub.webp" alt="Neighbours Pub" loading="lazy" width="400" height="400"></div>
+        <div class="logo-marquee-item"><img src="assets/logos/the-sticks.webp" alt="The Sticks Billiards &amp; Lounge" loading="lazy" width="400" height="400"></div>
+        <div class="logo-marquee-item"><img src="assets/logos/summit-vision.webp" alt="Summit Vision Training" loading="lazy" width="400" height="400"></div>
         <!-- Duplicate set for seamless loop -->
         <div class="logo-marquee-item"><img src="assets/logos/lloydminster-honda.webp" alt="" aria-hidden="true" loading="lazy" width="400" height="114"></div>
         <div class="logo-marquee-item"><img src="assets/logos/fountain-tire.webp" alt="" aria-hidden="true" loading="lazy" width="400" height="230"></div>
@@ -601,18 +598,13 @@
         <div class="logo-marquee-item"><img src="assets/logos/marc-d-up.webp" alt="" aria-hidden="true" loading="lazy" width="400" height="220"></div>
         <div class="logo-marquee-item"><img src="assets/logos/imagine-laser.webp" alt="" aria-hidden="true" loading="lazy" width="243" height="100"></div>
         <div class="logo-marquee-item"><img src="assets/logos/truck-zone.webp" alt="" aria-hidden="true" loading="lazy" width="198" height="79"></div>
-        <div class="logo-marquee-item text-logo" aria-hidden="true">Cheers Live</div>
-        <div class="logo-marquee-item text-logo" aria-hidden="true">Border City Dental</div>
-        <div class="logo-marquee-item text-logo" aria-hidden="true">Sunrise Pharmacy</div>
-        <div class="logo-marquee-item text-logo" aria-hidden="true">Lloyd Hi-Quality Auto</div>
-        <div class="logo-marquee-item text-logo" aria-hidden="true">Diamond Auto</div>
-        <div class="logo-marquee-item text-logo" aria-hidden="true">Sage and Soul</div>
-        <div class="logo-marquee-item text-logo" aria-hidden="true">Hotsul's Ukrainian</div>
-        <div class="logo-marquee-item text-logo" aria-hidden="true">Neighbours Pub</div>
-        <div class="logo-marquee-item text-logo" aria-hidden="true">The Sticks</div>
-        <div class="logo-marquee-item text-logo" aria-hidden="true">Summit Vision Training</div>
-        <div class="logo-marquee-item text-logo" aria-hidden="true">World Class Training</div>
-        <div class="logo-marquee-item text-logo" aria-hidden="true">Mr. Sparkle Car Wash</div>
+        <div class="logo-marquee-item"><img src="assets/logos/cheers-live.webp" alt="" aria-hidden="true" loading="lazy" width="400" height="400"></div>
+        <div class="logo-marquee-item"><img src="assets/logos/border-city-dental.webp" alt="" aria-hidden="true" loading="lazy" width="400" height="400"></div>
+        <div class="logo-marquee-item"><img src="assets/logos/sage-and-soul.webp" alt="" aria-hidden="true" loading="lazy" width="400" height="400"></div>
+        <div class="logo-marquee-item"><img src="assets/logos/hotsuls.webp" alt="" aria-hidden="true" loading="lazy" width="400" height="280"></div>
+        <div class="logo-marquee-item"><img src="assets/logos/neighbours-pub.webp" alt="" aria-hidden="true" loading="lazy" width="400" height="400"></div>
+        <div class="logo-marquee-item"><img src="assets/logos/the-sticks.webp" alt="" aria-hidden="true" loading="lazy" width="400" height="400"></div>
+        <div class="logo-marquee-item"><img src="assets/logos/summit-vision.webp" alt="" aria-hidden="true" loading="lazy" width="400" height="400"></div>
       </div>
     </div>
   </div>
@@ -811,8 +803,8 @@
             <td><span class="compare-name">Reach Screens</span><span class="compare-badge">Best Value</span></td>
             <td>
               <div class="cost-cell">
-                <span class="cost-bar cost-bar-rs" style="--w: 4%;"></span>
-                <span class="cost-value">Custom — contact us</span>
+                <span class="cost-bar cost-bar-rs" style="--w: 2%;"></span>
+                <span class="cost-value">$5 to $10</span>
               </div>
             </td>
             <td>15+ minutes (captive)</td>
@@ -898,7 +890,7 @@
       <p class="section-sub">If you serve local customers in the Lloydminster trading area, Reach Screens is a fit. These are the industries already running campaigns on our network — and the kinds of advertising questions we hear from each every week.</p>
     </div>
 
-    <div class="grid-3 stagger">
+    <div class="grid-3 stagger mobile-collapse" data-collapse-after="4">
       <div class="card" data-tilt="4">
         <h3 class="card-title">Restaurants, Bars &amp; Cafes</h3>
         <p class="card-text">Restaurant TV advertising in Lloydminster — daily specials, drink features, brunch menus, live music nights, and digital menu boards delivered to local diners while they're already making "where should we eat" decisions.</p>
@@ -915,26 +907,32 @@
         <h3 class="card-title">Real Estate &amp; Finance</h3>
         <p class="card-text">Real estate advertising and mortgage/insurance advertising in Lloydminster — listings, open houses, rate promotions, and broker introductions delivered where local prospects already spend time.</p>
       </div>
-      <div class="card" data-tilt="4">
+      <div class="card mobile-extra" data-tilt="4">
         <h3 class="card-title">Healthcare &amp; Wellness</h3>
         <p class="card-text">Dental office TV ads, chiropractor advertising, physio, optometry, and wellness advertising in Lloydminster — waiting-room screens and new-patient promotions running inside complementary local venues across the Border City.</p>
       </div>
-      <div class="card" data-tilt="4">
+      <div class="card mobile-extra" data-tilt="4">
         <h3 class="card-title">Retail &amp; Salons</h3>
         <p class="card-text">Boutique retail advertising, salon and spa advertising, and barbershop advertising in Lloydminster — promote new collections, stylist openings, gift cards, and seasonal sales to a hyper-local audience.</p>
       </div>
-      <div class="card" data-tilt="4">
+      <div class="card mobile-extra" data-tilt="4">
         <h3 class="card-title">Gyms &amp; Fitness</h3>
         <p class="card-text">Gym TV advertising in Lloydminster, fitness studio screens, January push, summer challenges, new-member promotions, and personal-training launches delivered to people already in nearby venues.</p>
       </div>
-      <div class="card" data-tilt="4">
+      <div class="card mobile-extra" data-tilt="4">
         <h3 class="card-title">Events &amp; Tourism</h3>
         <p class="card-text">Event advertising in Lloydminster — rodeo, fair, concert, fundraiser, market, and tourism promotion. Build awareness in the weeks leading up to the date and drive ticket sales right up to the night-of.</p>
       </div>
-      <div class="card" data-tilt="4">
+      <div class="card mobile-extra" data-tilt="4">
         <h3 class="card-title">Professional Services</h3>
         <p class="card-text">Lawyer advertising, accountant advertising, IT and marketing-services advertising in Lloydminster — referral-driven local brands building familiarity with the community before the buying decision happens.</p>
       </div>
+    </div>
+    <div class="mobile-collapse-trigger" data-target="industries">
+      <button type="button" class="btn btn-secondary mobile-show-more-btn" aria-expanded="false">
+        <span class="more-label">Show all 9 industries</span>
+        <svg class="more-chev" width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.06l3.71-3.83a.75.75 0 111.08 1.04l-4.25 4.4a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z"/></svg>
+      </button>
     </div>
   </div>
 </section>
@@ -950,7 +948,7 @@
       <p class="section-sub">The Reach Screens network is centred in Lloydminster, AB/SK — and the campaigns we run reach customers across the wider Lakeland and border-city trading area. Below are the communities our advertisers reach every day.</p>
     </div>
 
-    <div class="grid-3 stagger">
+    <div class="grid-3 stagger mobile-collapse" data-collapse-after="4">
       <div class="card">
         <h3 class="card-title">Lloydminster, AB / SK — The Border City</h3>
         <p class="card-text">The home market — digital signage Lloydminster locals already see every day. Indoor screen advertising across the Border City's busiest venues on both the Alberta and Saskatchewan sides of the Alberta-Saskatchewan border. Every Reach Screens display is inside the city.</p>
@@ -967,26 +965,32 @@
         <h3 class="card-title">Cold Lake, AB</h3>
         <p class="card-text">Cold Lake advertising — the Reach Screens network catches Cold Lake locals who travel into Lloydminster for shopping, services, and dealerships across the trading-area economy.</p>
       </div>
-      <div class="card">
+      <div class="card mobile-extra">
         <h3 class="card-title">St. Paul, AB</h3>
         <p class="card-text">St. Paul advertising — Lakeland visitors traveling through Lloydminster for dining, retail, dealerships, and professional services see ads on every screen in the network.</p>
       </div>
-      <div class="card">
+      <div class="card mobile-extra">
         <h3 class="card-title">Maidstone, Marshall &amp; SK communities</h3>
         <p class="card-text">Maidstone advertising and west-Saskatchewan local advertising — your campaign reaches SK-side commuters who use Lloydminster as their service hub for groceries, healthcare, and retail.</p>
       </div>
-      <div class="card">
+      <div class="card mobile-extra">
         <h3 class="card-title">Marwayne, Kitscoty &amp; Lakeland villages</h3>
         <p class="card-text">Marwayne, Kitscoty, Paradise Hill and surrounding Lakeland advertising — campaigns reach the rural and small-town customers who anchor Lloydminster's regional retail economy.</p>
       </div>
-      <div class="card">
+      <div class="card mobile-extra">
         <h3 class="card-title">Across Alberta &amp; Saskatchewan</h3>
         <p class="card-text">Local digital advertising serving both provinces — the only city in Canada governed by two provinces means Reach Screens campaigns hit AB and SK buyers in one unified rollout.</p>
       </div>
-      <div class="card">
+      <div class="card mobile-extra">
         <h3 class="card-title">Your venue, on the map</h3>
         <p class="card-text">If your business has foot traffic in the Lloydminster trading area and a good wall, you can host a Reach Screens display at no cost. Add a screen to the network, and your own business gets free ad rotation across every venue.</p>
       </div>
+    </div>
+    <div class="mobile-collapse-trigger" data-target="service-areas">
+      <button type="button" class="btn btn-secondary mobile-show-more-btn" aria-expanded="false">
+        <span class="more-label">Show all 9 service areas</span>
+        <svg class="more-chev" width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.06l3.71-3.83a.75.75 0 111.08 1.04l-4.25 4.4a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z"/></svg>
+      </button>
     </div>
   </div>
 </section>
@@ -1332,7 +1336,10 @@
 })();
 </script>
 
-<script src="main.js?v=19" defer></script>
-<script src="map.js?v=14" defer></script>
+<script src="main.js?v=20" defer></script>
+<!-- MapLibre + locations + map controller — direct load, ordering: deps first, then controller -->
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js" defer></script>
+<script src="assets/screen-locations.js?v=4" defer></script>
+<script src="map.js?v=15" defer></script>
 </body>
 </html>
