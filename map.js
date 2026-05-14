@@ -89,10 +89,40 @@
 
   function addBuildings(map) {
     if (!map.isStyleLoaded()) {
-      // Buildings need style ready; wait once and try again
+      // Style not ready, wait for next idle and try again
       map.once('idle', () => addBuildings(map));
       return;
     }
+
+    // The OpenFreeMap "liberty" style ships with a built-in `building-3d`
+    // fill-extrusion layer. Instead of adding our own, override the paint
+    // properties of the existing layer so the buildings render in the
+    // Reach Screens navy palette over the light tile base.
+    const existingBuildingLayer = map.getLayer('building-3d') ? 'building-3d'
+      : (map.getLayer('building') ? 'building' : null);
+
+    if (existingBuildingLayer) {
+      try {
+        map.setPaintProperty(existingBuildingLayer, 'fill-extrusion-color', [
+          'interpolate', ['linear'], ['coalesce', ['get', 'render_height'], 4],
+          0, '#1a2540',
+          10, '#243456',
+          25, '#2c4068',
+          60, '#3a5483'
+        ]);
+        map.setPaintProperty(existingBuildingLayer, 'fill-extrusion-opacity', 0.92);
+        map.setPaintProperty(existingBuildingLayer, 'fill-extrusion-vertical-gradient', true);
+        map.setLayoutProperty(existingBuildingLayer, 'visibility', 'visible');
+        if (map.setLayerZoomRange) {
+          try { map.setLayerZoomRange(existingBuildingLayer, 12, 24); } catch (_) {}
+        }
+      } catch (e) {
+        console.warn('[RS-MAP] could not recolor existing 3D buildings:', e.message);
+      }
+      return;
+    }
+
+    // Fallback: liberty style not present, add our own layer
     if (map.getLayer('rs-buildings-3d')) return;
 
     const sources = map.getStyle().sources || {};
@@ -120,7 +150,7 @@
         source: sourceId,
         'source-layer': 'building',
         filter: ['!=', ['get', 'hide_3d'], true],
-        minzoom: 13,
+        minzoom: 12,
         paint: {
           'fill-extrusion-color': [
             'interpolate', ['linear'], ['coalesce', ['get', 'render_height'], 4],
@@ -131,15 +161,15 @@
           ],
           'fill-extrusion-height': [
             'interpolate', ['linear'], ['zoom'],
-            13, 0,
+            12, 0,
             14, ['coalesce', ['get', 'render_height'], 4]
           ],
           'fill-extrusion-base': [
             'interpolate', ['linear'], ['zoom'],
-            13, 0,
+            12, 0,
             14, ['coalesce', ['get', 'render_min_height'], 0]
           ],
-          'fill-extrusion-opacity': 0.88,
+          'fill-extrusion-opacity': 0.92,
           'fill-extrusion-vertical-gradient': true
         }
       }, beforeId);
